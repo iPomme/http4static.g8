@@ -1,13 +1,29 @@
-# http4s giter8 template [![Build Status](https://travis-ci.org/http4s/http4s.g8.svg)](https://travis-ci.org/http4s/http4s.g8)
+# http4static giter8 template
 
-Generate an http4s service on the blaze backend with Circe.
+Forked from [http4s g8 template](http4s/http4s.g8)
 
+Serve static web site under ./www folder
+
+Create the project
 1. [Install sbt](http://www.scala-sbt.org/1.0/docs/Setup.html)
-2. `sbt new http4s/http4s.g8`
-3. `cd quickstart`
-4. `sbt run`
-5. `curl http://localhost:8080/hello/$USER`
-6. [Learn more](http://http4s.org/)
+2. `sbt new iPomme/http4static.g8`
+3. `cd http4static`
+4. copy static HTML files under `./www`
+
+Test locally
+
+5. `sbt run`
+6. open http://localhost:8080/index.html in a browser
+
+
+deploy on Heroku
+1. `heroku create myStaticSite`
+2. `git remote add heroku https://git.heroku.com/myStaticSite.git`
+3. `git commit -am "message"`
+4. `git push`
+5. open http://myStaticSite.herokuapp.com/index.html in a browser
+
+[based on http4s](http://http4s.org/)
 
 
 Note:
