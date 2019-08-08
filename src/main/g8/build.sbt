@@ -1,3 +1,6 @@
+import com.typesafe.sbt.SbtNativePackager.Universal
+import com.typesafe.sbt.packager.MappingsHelper._
+
 val Http4sVersion = "$http4s_version$"
 val CirceVersion = "$circe_version$"
 val Specs2Version = "$specs2_version$"
@@ -18,9 +21,13 @@ lazy val root = (project in file("."))
       "org.specs2"      %% "specs2-core"         % Specs2Version % "test",
       "ch.qos.logback"  %  "logback-classic"     % LogbackVersion
     ),
+    mappings in Universal ++= directory("www"),
+    dockerBaseImage := "openjdk:jre-alpine",
     addCompilerPlugin("org.typelevel" %% "kind-projector"     % "0.10.3"),
     addCompilerPlugin("com.olegpy"    %% "better-monadic-for" % "0.3.0")
   ).enablePlugins(JavaAppPackaging)
+  .enablePlugins(DockerPlugin)
+  .enablePlugins(AshScriptPlugin)
 
 scalacOptions ++= Seq(
   "-deprecation",

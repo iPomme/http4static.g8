@@ -2,35 +2,39 @@
 
 Forked from [http4s g8 template](http4s/http4s.g8)
 
-Serve static web site under ./www folder
+If you want to quickly serve a static HTML site locally or want to deploy on a cloud, this template is for you.
 
-Create the project
+Basically all you'll have to do is copy your static site under the `./www` folder.
+
+# Create a project
 1. [Install sbt](http://www.scala-sbt.org/1.0/docs/Setup.html)
-2. `sbt new iPomme/http4static.g8`
-3. `cd http4static`
-4. copy static HTML files under `./www`
+1. `sbt new iPomme/http4static.g8`
+1. `cd http4static`
+1. copy static HTML files under `./www`
 
-Test locally
+Note: 
 
+The folder `./www` contains a file named `index.html` so you can test the deployment without your own html files.
+
+# Run locally
 5. `sbt run`
 6. open http://localhost:8080/index.html in a browser
 
+# Run locally on Docker
+1. [Install Docker](https://docs.docker.com/install/)
+1. `sbt docker:publishLocal`
+1. `docker run --rm -p8080:8080 myStaticSite:0.0.1-SNAPSHOT`
+1. open http://localhost:8080/index.html in a browser
 
-deploy on Heroku
+# Deploy on Heroku
+1. [Get free Heroku account](https://signup.heroku.com/signup/dc)
+1. [ Heroku Command Line Interface (CLI)](https://devcenter.heroku.com/articles/getting-started-with-scala#set-up)
 1. `heroku create myStaticSite`
-2. `git remote add heroku https://git.heroku.com/myStaticSite.git`
-3. `git commit -am "message"`
-4. `git push`
-5. open http://myStaticSite.herokuapp.com/index.html in a browser
+1. `git remote add heroku https://git.heroku.com/myStaticSite.git`
+1. `git commit -am "message"`
+1. `git push`
+1. open http://myStaticSite.herokuapp.com/index.html in a browser
+
+
 
 [based on http4s](http://http4s.org/)
-
-
-Note:
-
-We have enabled [sbt-partial-unification](https://github.com/fiadliel/sbt-partial-unification) 
-necessary for utilizing all features of Http4s and Cats.
-As well as [sbt-revolver](https://github.com/spray/sbt-revolver) for easier project reloading.
-
-We have commented out the [sbt-tpolecat](https://github.com/DavidGregory084/sbt-tpolecat) plugin in the generated `project/plugins.sbt`.
-We highly recommend it for projects, but it may not be a good baseline for new users.
