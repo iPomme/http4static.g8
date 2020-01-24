@@ -36,5 +36,5 @@ scalacOptions ++= Seq(
   "-language:postfixOps",
   "-feature",
   "-Ypartial-unification",
-  "-Xfatal-warnings",
+  "-Xfatal-warnings"
 )

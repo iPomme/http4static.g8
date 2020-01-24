@@ -30,9 +30,11 @@ The folder `./www` contains a file named `index.html` so you can test the deploy
 1. [Get free Heroku account](https://signup.heroku.com/signup/dc)
 1. [ Heroku Command Line Interface (CLI)](https://devcenter.heroku.com/articles/getting-started-with-scala#set-up)
 1. `heroku create myStaticSite`
+1. `git init`
 1. `git remote add heroku https://git.heroku.com/myStaticSite.git`
-1. `git commit -am "message"`
-1. `git push`
+1. `git add .`
+1. `git commit -m "message"`
+1. `git push heroku master`
 1. open http://myStaticSite.herokuapp.com/index.html in a browser
 
 
